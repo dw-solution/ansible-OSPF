@@ -1,0 +1,17 @@
+---
+## Playbook to Configure Things
+
+- hosts: ios 
+
+  tasks:
+    - name: Configure a single command
+      ios_config:
+        lines: vlan 10
+
+    - name: Configure multiple lines of code from a text file
+      ios_config:
+        src: "~/Ansible/configs/config1.txt"
+
+    - name: Save the config always
+      ios_config:
+        save_when: always

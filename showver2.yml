@@ -1,0 +1,15 @@
+---
+## Playbook to Show Version on IOS - Save to file
+
+- hosts: CSR_Routers
+
+  tasks:
+   - name: Show Version
+     ios_command:
+       commands: show version 
+     register: version
+
+   - name: Save output to ~/Ansible/versions
+     copy:
+       content: "{{version.stdout[0]}}"
+       dest: "~/Ansible/versions/{{inventory_hostname}}-version.txt"

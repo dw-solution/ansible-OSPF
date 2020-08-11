@@ -1,0 +1,14 @@
+#Ansible Host File
+
+[CSR_Routers]
+CSR-1 ansible_host=192.168.122.219
+CSR-2 ansible_host=192.168.122.75
+CSR-3 ansible_host=192.168.122.208
+CSR-4 ansible_host=192.168.122.48 
+
+[nxos]
+NX9K-1 ansible_host=192.168.122.157
+NX9K-2 ansible_host=192.168.122.112
+
+[ios]
+SW1 ansible_host=192.168.122.99

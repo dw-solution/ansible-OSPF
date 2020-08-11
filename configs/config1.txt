@@ -1,0 +1,3 @@
+username john priv 10 password cisco
+username mark priv 10 password cisco
+

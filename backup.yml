@@ -1,0 +1,15 @@
+---
+# Playbook to Save Backup Configurations
+
+- hosts: CSR_Routers
+
+  tasks:
+    - name: Backup Configurations
+      ios_command:
+        commands: show run
+      register: config 
+
+    - name: Save output to ~/Ansible/backups
+      copy:
+        content: "{{config.stdout[0]}}"
+        dest: "~/Ansible/backups/{{inventory_hostname}}-backup.cfg"

@@ -1,0 +1,34 @@
+---
+# Playbook to Save Backup Configurations with DTG Options
+# Command to obtain DTG options is ansible localhost -m setup -a "filter=ansible_date_time"
+
+- hosts: localhost
+
+  tasks:
+    - name: Get ansible date/time facts
+      setup:
+        filter: "ansible_date_time"
+        gather_subset: "!all"
+
+    - name: Store DTG as fact
+      set_fact:
+        DTG: "{{ ansible_date_time.date }}"
+
+    - name: Create Directory {{hostvars.localhost.DTG}}
+      file:
+       path: ~/Ansible/backups/{{hostvars.localhost.DTG}}
+       state: directory
+  run_once: true     
+
+- hosts: CSR_Routers
+
+  tasks:
+    - name: Backup Configurations
+      ios_command:
+        commands: show run
+      register: config 
+
+    - name: Save output to ~/Ansible/backups/{{hostvars.localhost.DTG}}
+      copy:
+        content: "{{config.stdout[0]}}"
+        dest: "~/Ansible/backups/{{hostvars.localhost.DTG}}/{{inventory_hostname}}-{{hostvars.localhost.DTG}}-config.txt"
