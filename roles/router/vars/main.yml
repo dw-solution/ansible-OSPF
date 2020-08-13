@@ -1,0 +1,18 @@
+---
+routers:
+
+  - hostname: CSR1
+    loopbackip: 1.1.1.1 255.255.255.255
+    loopback1ip: 10.10.10.10 255.255.255.255
+
+  - hostname: CSR2
+    loopbackip: 2.2.2.2 255.255.255.255
+    loopback1ip: 20.20.20.20 255.255.255.255
+
+  - hostname: CSR3
+    loopbackip: 3.3.3.3 255.255.255.255
+    loopback1ip: 30.30.30.30 255.255.255.255
+
+  - hostname: CSR4
+    loopbackip: 4.4.4.4 255.255.255.255
+    loopback1ip: 40.40.40.40 255.255.255.255
