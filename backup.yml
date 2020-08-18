@@ -1,7 +1,7 @@
 ---
 # Playbook to Save Backup Configurations
 
-- hosts: CSR_Routers
+- hosts: Routers
 
   tasks:
     - name: Backup Configurations
@@ -9,7 +9,7 @@
         commands: show run
       register: config 
 
-    - name: Save output to ~/Ansible/backups
+    - name: Save output to ~/ANS_OSPF/ansible-RHEL/backups
       copy:
         content: "{{config.stdout[0]}}"
-        dest: "~/Ansible/backups/{{inventory_hostname}}-backup.cfg"
+        dest: "~/ANS_OSPF/ansible-RHEL/backups/{{inventory_hostname}}-backup.cfg"

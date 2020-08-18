@@ -1,0 +1,15 @@
+---
+## Playbook to Show OSPF Neighbors on Routers - Save to file
+
+- hosts: Routers
+
+  tasks:
+   - name: Show OSPF Neighbors
+     ios_command:
+       commands: show ip ospf neighbor
+     register: neighbor
+
+   - name: Save output to ~/ANS_OSPF/ansible-RHEL/neighbors
+     copy:
+       content: "{{neighbor.stdout[0]}}"
+       dest: "~/ANS_OSPF/ansible-RHEL/neighbors/{{inventory_hostname}}-neighbors.txt"

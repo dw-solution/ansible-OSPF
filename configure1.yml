@@ -1,16 +1,16 @@
 ---
 ## Playbook to Configure Things
 
-- hosts: CSR_Routers
+- hosts: Routers
 
   tasks:
     - name: Configure a single command
       ios_config:
-        lines: router ospf 1
+        lines: service password-encryption
 
     - name: Configure multiple lines of code from a text file
       ios_config:
-        src: "~/Ansible/configs/config1.txt"
+        src: "~/ANS_OSPF/ansible-RHEL/configs/config1.txt"
 
     - name: Save the config always
       ios_config:

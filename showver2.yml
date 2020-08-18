@@ -1,7 +1,7 @@
 ---
 ## Playbook to Show Version on IOS - Save to file
 
-- hosts: CSR_Routers
+- hosts: Routers
 
   tasks:
    - name: Show Version
@@ -9,7 +9,7 @@
        commands: show version 
      register: version
 
-   - name: Save output to ~/Ansible/versions
+   - name: Save output to ~/ANS_OSPF/ansible-RHEL/versions
      copy:
        content: "{{version.stdout[0]}}"
-       dest: "~/Ansible/versions/{{inventory_hostname}}-version.txt"
+       dest: "~/ANS_OSPF/ansible-RHEL/versions/{{inventory_hostname}}-version.txt"

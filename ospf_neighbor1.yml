@@ -1,12 +1,12 @@
 ---
-## Playbook to Show Version on IOS
+## Playbook to Show OSPF Neighbors on Routers
 
 - hosts: Routers
 
   tasks:
-    - name: Show Version
+    - name: Show OSPF Neighbors
       ios_command:
-        commands: show version 
+        commands: show ip ospf neighbor
 
       register: print_output
 
