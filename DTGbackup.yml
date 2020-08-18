@@ -16,11 +16,11 @@
 
     - name: Create Directory {{hostvars.localhost.DTG}}
       file:
-       path: ~/Ansible/backups/{{hostvars.localhost.DTG}}
+       path: ~/ANS_OSPF/ansible-RHEL/backups/{{hostvars.localhost.DTG}}
        state: directory
   run_once: true     
 
-- hosts: CSR_Routers
+- hosts: Routers
 
   tasks:
     - name: Backup Configurations
@@ -28,7 +28,7 @@
         commands: show run
       register: config 
 
-    - name: Save output to ~/Ansible/backups/{{hostvars.localhost.DTG}}
+    - name: Save output to ~/ANS_OSPF/ansible-RHEL/backups/{{hostvars.localhost.DTG}}
       copy:
         content: "{{config.stdout[0]}}"
-        dest: "~/Ansible/backups/{{hostvars.localhost.DTG}}/{{inventory_hostname}}-{{hostvars.localhost.DTG}}-config.txt"
+        dest: "~/ANS_OSPF/ansible-RHEL/backups/{{hostvars.localhost.DTG}}/{{inventory_hostname}}-{{hostvars.localhost.DTG}}-config.txt"
